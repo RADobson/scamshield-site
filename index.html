@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScamShield | Managed Protection for Seniors</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><path d=%22M50 3L9 21v28c0 25 17 48 41 54 24-6 41-29 41-54V21L50 3z%22 fill=%22%230984E3%22/><path d=%22M35 50l10 10 20-20%22 stroke=%22%23fff%22 stroke-width=%228%22 fill=%22none%22/></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- THEME: TRUST & CLARITY --- */
+        :root {
+            --primary-blue: #0984E3;   /* "Trust" Blue */
+            --dark-blue: #2D3436;      /* Text Color */
+            --bg-light: #F8F9FA;       /* Clean Background */
+            --bg-white: #FFFFFF;
+            --alert-red: #D63031;      /* For "Scam" highlights */
+            --success-green: #00B894;  /* For "Protected" highlights */
+            --font-main: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg-light);
+            color: var(--dark-blue);
+            font-family: var(--font-main);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; color: #2c3e50; }
+        p { color: #636e72; font-size: 1.1rem; }
+        a { text-decoration: none; transition: all 0.2s ease; }
+        
+        .container { width: 90%; max-width: 1100px; margin: 0 auto; }
+        .text-center { text-align: center; }
+        .highlight-blue { color: var(--primary-blue); }
+
+        /* --- NAVIGATION --- */
+        header {
+            background: var(--bg-white);
+            padding: 1.2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--primary-blue); display: flex; align-items: center; gap: 10px; }
+        .logo svg { height: 24px; width: 24px; fill: var(--primary-blue); }
+        
+        .btn-nav {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .btn-nav:hover { background: #076ebc; transform: translateY(-1px); }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, #fff 0%, #f1f4f8 100%);
+            text-align: center;
+        }
+        .hero-badge {
+            background: #e1f0ff;
+            color: var(--primary-blue);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+        h1.hero-title { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        p.hero-sub { max-width: 600px; margin: 0 auto 2.5rem auto; font-size: 1.25rem; }
+        
+        .btn-hero {
+            background: var(--success-green);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+            display: inline-block;
+        }
+        .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4); }
+
+        /* --- PROBLEM / SOLUTION --- */
+        #problem { padding: 5rem 0; background: var(--bg-white); }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+        
+        .stat-card {
+            background: #fff5f5;
+            border-left: 5px solid var(--alert-red);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+        .stat-card h3 { color: var(--alert-red); margin-bottom: 0.5rem; }
+
+        /* --- HOW IT WORKS (The Managed SOC pitch) --- */
+        #how-it-works { padding: 5rem 0; background: #2c3e50; color: white; }
+        #how-it-works h2 { color: white; }
+        #how-it-works p { color: #dfe6e9; }
+        
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .step-card { background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 12px; text-align: left; }
+        .step-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+        /* --- PRICING --- */
+        #pricing { padding: 5rem 0; }
+        .price-card {
+            background: var(--bg-white);
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 2px solid #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card:hover { border-color: var(--primary-blue); transform: translateY(-5px); transition: all 0.3s ease; }
+        
+        .badge-save {
+            position: absolute; top: 20px; right: -30px; background: var(--alert-red); color: white;
+            padding: 5px 40px; transform: rotate(45deg); font-size: 0.8rem; font-weight: bold;
+        }
+
+        .price-amount { font-size: 3.5rem; font-weight: 800; color: var(--dark-blue); }
+        .price-period { font-size: 1rem; color: #b2bec3; }
+        
+        .benefit-list { list-style: none; text-align: left; margin: 2rem 0; }
+        .benefit-list li { margin-bottom: 1rem; font-weight: 500; display: flex; align-items: center; }
+        .benefit-list li svg { width: 20px; height: 20px; margin-right: 12px; fill: var(--success-green); flex-shrink: 0; }
+
+        /* --- CONTACT FORM --- */
+        #get-started { padding: 5rem 0; background: var(--bg-white); border-top: 1px solid #eee; }
+        .form-box {
+            max-width: 600px; margin: 0 auto;
+            background: #f8f9fa; padding: 2.5rem; border-radius: 12px;
+            border: 1px solid #e9ecef;
+        }
+        .input-group { margin-bottom: 1.5rem; }
+        .input-label { display: block; font-weight: 600; margin-bottom: 0.5rem; color: #2d3436; }
+        .input-field {
+            width: 100%; padding: 0.8rem; border: 1px solid #dfe6e9; border-radius: 6px;
+            font-size: 1rem; font-family: var(--font-main);
+        }
+        .input-field:focus { outline: none; border-color: var(--primary-blue); box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.2); }
+        .btn-submit {
+            width: 100%; padding: 1rem; background: var(--primary-blue); color: white;
+            border: none; border-radius: 6px; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+        }
+        .btn-submit:hover { background: #076ebc; }
+
+        /* --- FOOTER --- */
+        footer { padding: 3rem 0; background: #fff; text-align: center; border-top: 1px solid #eee; font-size: 0.9rem; color: #b2bec3; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            h1.hero-title { font-size: 2.2rem; }
+            .grid-2 { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-flex">
+            <div class="logo">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                ScamShield
+            </div>
+            <a href="#get-started" class="btn-nav">Get Protected</a>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-badge">Protect Your Parents Online</div>
+            <h1 class="hero-title">Stop the <span class="highlight-blue">"Remote Access"</span><br>Scammers.</h1>
+            <p class="hero-sub">
+                Enterprise-grade security, managed by real humans, designed for seniors. 
+                We block malicious connections and fake bank sites before they click.
+            </p>
+            <a href="#get-started" class="btn-hero">Check Availability</a>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #b2bec3;">No credit card required for enquiry.</p>
+        </div>
+    </section>
+
+    <section id="problem">
+        <div class="container">
+            <h2 class="text-center">Antivirus is not enough anymore.</h2>
+            <p class="text-center" style="max-width: 700px; margin: 1rem auto;">
+                Traditional antivirus stops viruses, but it doesn't stop <strong>scammers</strong>. 
+                Criminals now use legitimate tools (like TeamViewer) to trick seniors into handing over control.
+            </p>
+
+            <div class="grid-2">
+                <div>
+                    <div class="stat-card">
+                        <h3>The "Microsoft Support" Scam</h3>
+                        <p>Scammers call claiming to be "Tech Support." They ask to remote into the computer. Once in, they drain bank accounts. <strong>Antivirus does not block this.</strong></p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>The "Silent" Threat</h3>
+                        <p>Seniors often don't realize they've been hacked until money goes missing. They are too embarrassed to ask for help.</p>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <svg width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="#2D3436" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                        <path d="M12 12l4.5 4.5" stroke="#D63031" stroke-width="3"></path>
+                        <path d="M16.5 12l-4.5 4.5" stroke="#D63031" stroke-width="3"></path>
+                    </svg>
+                    <p style="font-weight: bold; margin-top: 1rem;">We cut the connection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works">
+        <div class="container">
+            <h2 class="text-center">How ScamShield Guardian Works</h2>
+            <p class="text-center" style="margin-bottom: 3rem;">We install a tiny, silent agent on their computer. It connects to our 24/7 Security Center.</p>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <span class="step-icon">👁️</span>
+                    <h3>1. We Watch</h3>
+                    <p>Our Australian-based engineers monitor the computer for dangerous behavior (not your personal files).</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-icon">🛑</span>
+                    <h3>2. We Block</h3>
+                    <p>If a known scam tool tries to run, or they visit a known fake bank site, we block it instantly.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-icon">📞</span>
+                    <h3>3. We Alert You</h3>
+                    <p>If we detect a serious threat, we resolve it remotely, then email you a plain-English report.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class="container text-center">
+            <h2>Bank-Grade Security. Pensioner Price.</h2>
+            <p style="margin-bottom: 3rem;">Cheaper than one hour of computer repair.</p>
+
+            <div class="price-card">
+                <div class="badge-save">PEACE OF MIND</div>
+                <h3>ScamShield Guardian</h3>
+                <div class="price-amount">$19 <span class="price-period">/mo</span></div>
+                <p style="color: #636e72; font-size: 0.9rem;">(Per Computer. Cancel Anytime.)</p>
+
+                <ul class="benefit-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><strong>Remote Access Blocking</strong> (Stops AnyDesk/TeamViewer scams)</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><strong>Fake Bank Site Blocker</strong> (Anti-Phishing)</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><strong>Next-Gen Antivirus</strong> included</li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg><strong>24/7 Human Monitoring</strong></li>
+                    <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Monthly "Safety Report" for the family</li>
+                </ul>
+
+                <a href="#get-started" class="btn-submit" style="display:block; text-decoration:none;">Protect Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="get-started">
+        <div class="container">
+            <h2 class="text-center">Start your 30-Day Risk-Free Trial</h2>
+            <p class="text-center" style="margin-bottom: 2rem;">Fill out this form. We will email you the simple installer link.</p>
+            
+            <div class="form-box">
+                <form action="https://formspree.io/f/xzznoayg" method="POST">
+                    
+                    <div class="input-group">
+                        <label class="input-label">Your Name (The Protector)</label>
+                        <input type="text" name="protector_name" class="input-field" placeholder="e.g. John Smith" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Your Email</label>
+                        <input type="email" name="email" class="input-field" placeholder="john@email.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Who are we protecting?</label>
+                        <select name="protecting_who" class="input-field">
+                            <option value="Parents">My Parents</option>
+                            <option value="Grandparents">My Grandparents</option>
+                            <option value="Myself">Myself</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">How many computers?</label>
+                        <select name="computer_count" class="input-field">
+                            <option value="1">1 Computer ($19/mo)</option>
+                            <option value="2">2 Computers ($38/mo)</option>
+                            <option value="3+">3+ Computers</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Any specific concerns?</label>
+                        <textarea name="message" class="input-field" rows="3" placeholder="e.g. Mum gets a lot of spam emails..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Send Me The Installer</button>
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: #636e72;">
+                        We will reply within 24 hours. No payment needed today.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ScamShield Digital.</p>
+            <p>Powered by Dobson Development Pty Ltd.</p>
+            <br>
+            <p style="font-size: 0.8rem;">
+                Disclaimer: While we employ enterprise-grade blocking technology, no security solution is 100% effective. 
+                We significantly reduce risk but cannot guarantee total immunity from all scams.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
